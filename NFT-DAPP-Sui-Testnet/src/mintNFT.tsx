@@ -5,6 +5,8 @@ import { useSignAndExecuteTransaction } from "@mysten/dapp-kit";
 import { useNetworkVariable } from "./networkConfig";
 import ClipLoader from "react-spinners/ClipLoader";
 
+var image_Name = "";
+
 export function MintNFT() {
   const nftPackageId = useNetworkVariable("nftPackageId");
   const [customerAddress, setCustomerAddress] = useState<string>("");
@@ -84,6 +86,19 @@ export function MintNFT() {
               />
           </div>
           
+          <div>
+            <Text as="div" size="2" weight="medium" style={{ marginBottom: '0.25rem' }}>
+              NFT Name
+            </Text>
+              <input
+                className="rt-TextFieldInput"
+                placeholder="Enter NFT name"
+                value={image_Name}
+                onChange={handleImageUrlChange}
+                disabled={isPending || isSuccess}
+              />
+          </div>
+
           <Button 
             size="3" 
             onClick={mintNFT}
